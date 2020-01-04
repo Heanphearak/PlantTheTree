@@ -7,12 +7,19 @@
     tools:context=".ProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:textAlignment="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:text="Profile" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
 
+        app:title="Profile"
+        app:titleTextColor="#FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#0C631E"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="Profile"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:textSize="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
