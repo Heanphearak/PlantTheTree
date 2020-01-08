@@ -1,7 +1,8 @@
-package niptict.edu.projectplantthetree
+package niptict.edu.projectplantthetree.fragments
 
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
@@ -19,9 +20,12 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.fragment_home.view.*
+import niptict.edu.projectplantthetree.R
+import niptict.edu.projectplantthetree.activities.PostTreeActivity
 import java.util.ArrayList
 
-class MyTreeFragment : Fragment(), OnMapReadyCallback {
+class HomeFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     var arrayList = ArrayList<LatLng>()
     val sydney = LatLng(11.6945292,104.9405128)
@@ -29,12 +33,11 @@ class MyTreeFragment : Fragment(), OnMapReadyCallback {
     val kompot = LatLng(11.6158617,104.9938497)
     val kep = LatLng(13.507646,104.3008438)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_my_tree, container, false)
+        val v = inflater.inflate(R.layout.fragment_home, container, false)
+
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.map_fragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -43,6 +46,12 @@ class MyTreeFragment : Fragment(), OnMapReadyCallback {
         arrayList.add(phnompenh)
         arrayList.add(kompot)
         arrayList.add(kep)
+
+        v.add_tree.setOnClickListener {
+            val intentToPostTreeActivity = Intent(requireContext(),
+                PostTreeActivity::class.java)
+            startActivity(intentToPostTreeActivity)
+        }
 
         return v
     }
@@ -54,7 +63,9 @@ class MyTreeFragment : Fragment(), OnMapReadyCallback {
             Log.d("lat->",arrayList[i].toString())
             mMap.addMarker(
                 MarkerOptions().position(arrayList[i]).title("Marker").icon(bitmapDescriptorFromVector(
-                    this.context!!,R.drawable.ic_tree)).snippet("dkdkd"))
+                    this.context!!,
+                    R.drawable.ic_tree
+                )).snippet("dkdkd"))
             mMap.moveCamera(CameraUpdateFactory.newLatLng(arrayList[i]))
             mMap.animateCamera(CameraUpdateFactory.zoomTo(2.5f))
         }
@@ -72,5 +83,4 @@ class MyTreeFragment : Fragment(), OnMapReadyCallback {
         vectorDrawable.draw(canvas)
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
-
 }
