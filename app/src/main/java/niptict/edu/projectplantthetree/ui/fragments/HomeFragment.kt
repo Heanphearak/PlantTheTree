@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import niptict.edu.projectplantthetree.R
+import niptict.edu.projectplantthetree.adapters.CustomInfoWindowAdapter
 import niptict.edu.projectplantthetree.internet.PostTreeActivity
 import java.util.ArrayList
 
@@ -57,16 +58,19 @@ class HomeFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
+        val markerOpt = MarkerOptions()
         for (i in 0 until arrayList.size){
             Log.d("lat->",arrayList[i].toString())
             mMap.addMarker(
-                MarkerOptions().position(arrayList[i]).title("Marker").icon(bitmapDescriptorFromVector(
-                    this.context!!,
-                    R.drawable.ic_tree
-                )).snippet("dkdkd"))
+                markerOpt.position(arrayList[i]).title("Marker").icon(bitmapDescriptorFromVector(
+                    this.context!!, R.drawable.ic_tree)))
             mMap.moveCamera(CameraUpdateFactory.newLatLng(arrayList[i]))
             mMap.animateCamera(CameraUpdateFactory.zoomTo(2.5f))
+
+            val adapter = CustomInfoWindowAdapter(this)
+            mMap.setInfoWindowAdapter(adapter)
+
+            mMap.addMarker(markerOpt).showInfoWindow()
         }
     }
 

@@ -6,11 +6,11 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -20,7 +20,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import niptict.edu.projectplantthetree.R
-import java.util.ArrayList
+import niptict.edu.projectplantthetree.adapters.CustomInfoWindowAdapter
+import java.util.*
+
 
 class MyTreeFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
@@ -50,16 +52,19 @@ class MyTreeFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
+        val markerOpt = MarkerOptions()
         for (i in 0 until arrayList.size){
             Log.d("lat->",arrayList[i].toString())
             mMap.addMarker(
-                MarkerOptions().position(arrayList[i]).title("Marker").icon(bitmapDescriptorFromVector(
-                    this.context!!,
-                    R.drawable.ic_tree
-                )).snippet("dkdkd"))
+                markerOpt.position(arrayList[i]).title("Marker").icon(bitmapDescriptorFromVector(
+                    this.context!!, R.drawable.ic_tree)))
             mMap.moveCamera(CameraUpdateFactory.newLatLng(arrayList[i]))
             mMap.animateCamera(CameraUpdateFactory.zoomTo(2.5f))
+
+            val adapter = CustomInfoWindowAdapter(this)
+            mMap.setInfoWindowAdapter(adapter)
+
+            mMap.addMarker(markerOpt).showInfoWindow()
         }
     }
 
