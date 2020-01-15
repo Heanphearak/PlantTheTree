@@ -7,7 +7,6 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,10 +21,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import niptict.edu.projectplantthetree.R
-import niptict.edu.projectplantthetree.activities.PostTreeActivity
+import niptict.edu.projectplantthetree.internet.PostTreeActivity
 import java.util.ArrayList
 
-class HomeFragment : Fragment(), OnMapReadyCallback {
+class HomeFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     var arrayList = ArrayList<LatLng>()
     val sydney = LatLng(11.6945292,104.9405128)

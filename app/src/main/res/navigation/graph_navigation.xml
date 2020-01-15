@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/home_navigation"
-        android:name="niptict.edu.projectplantthetree.HomeFragment"
+        android:name="niptict.edu.projectplantthetree.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/my_tree_navigation"
-        android:name="niptict.edu.projectplantthetree.MyTreeFragment"
+        android:name="niptict.edu.projectplantthetree.fragments.MyTreeFragment"
         android:label="fragment_my_tree"
         tools:layout="@layout/fragment_my_tree" />
     <fragment
         android:id="@+id/profile_navigation"
-        android:name="niptict.edu.projectplantthetree.ProfileFragment"
+        android:name="niptict.edu.projectplantthetree.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

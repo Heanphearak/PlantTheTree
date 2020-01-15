@@ -1,4 +1,4 @@
-package niptict.edu.projectplantthetree.activities
+package niptict.edu.projectplantthetree.internet
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
