@@ -3,7 +3,9 @@
     package="niptict.edu.projectplantthetree">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <application
@@ -13,13 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".internet.PostTreeActivity"></activity>
+        <activity android:name=".internet.MainActivity"></activity>
+        <activity android:name=".ui.activities.ForgotPasswordActivity" />
+        <activity android:name=".internet.PostTreeActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".internet.MainActivity">
+        <activity android:name=".ui.activities.GetVerificationCodeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

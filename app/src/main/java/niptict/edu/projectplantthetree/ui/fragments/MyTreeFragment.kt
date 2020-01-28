@@ -19,6 +19,7 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.info_window.*
 import niptict.edu.projectplantthetree.R
 import niptict.edu.projectplantthetree.adapters.CustomInfoWindowAdapter
 import java.util.*
@@ -63,8 +64,8 @@ class MyTreeFragment : Fragment(), OnMapReadyCallback {
 
             val adapter = CustomInfoWindowAdapter(this)
             mMap.setInfoWindowAdapter(adapter)
-
             mMap.addMarker(markerOpt).showInfoWindow()
+
         }
     }
 

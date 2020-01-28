@@ -1,7 +1,8 @@
-package niptict.edu.projectplantthetree
+package niptict.edu.projectplantthetree.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import niptict.edu.projectplantthetree.R
 
 class GetVerificationCodeActivity : AppCompatActivity() {
 
